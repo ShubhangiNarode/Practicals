@@ -1,0 +1,70 @@
+Here is a detailed **Use Case Diagram description** for a **Coffee Vending Machine System** (also sometimes called *Coffee Wandering Machine*, assuming it’s a vending machine), with **8–9 use cases**, suitable for creating in **StarUML**:
+
+---
+
+### ✅ **Use Case Diagram – Coffee Vending Machine System**
+
+#### 📌 **Actors:**
+
+* Customer
+* Maintenance Staff
+* Admin
+
+#### 📌 **Use Cases (8–9):**
+
+1. Select Beverage
+2. Insert Coins/Card Payment
+3. Authenticate Payment
+4. Dispense Coffee
+5. Cancel Order
+6. Refill Ingredients
+7. Clean Machine
+8. Show Error
+9. Check Machine Status
+
+---
+
+### 📌 **Actor–Use Case Associations:**
+
+* **Customer** → Select Beverage, Insert Coins/Card Payment, Authenticate Payment, Dispense Coffee, Cancel Order
+* **Maintenance Staff** → Refill Ingredients, Clean Machine, Check Machine Status
+* **Admin** → Show Error, Check Machine Status
+
+---
+
+### 📌 **UML Relationships to Include:**
+
+#### ✅ **<<include>> Relationships:**
+
+* Dispense Coffee `<<include>>` Authenticate Payment
+* Authenticate Payment `<<include>>` Insert Coins/Card Payment
+
+#### ✅ **<<extend>> Relationships:**
+
+* Cancel Order `<<extend>>` Select Beverage
+* Show Error `<<extend>>` Dispense Coffee
+
+#### ✅ **Generalization Relationship:**
+
+* Admin and Maintenance Staff can be generalized under **Operator** (optional)
+
+---
+
+### 📌 **System Boundary:**
+
+* Label as: **Coffee Vending Machine System**
+
+---
+
+### 📌 **StarUML Drawing Instructions:**
+
+1. **Open StarUML** → Create a new Use Case Diagram
+2. Add **System Boundary**: Name it “Coffee Vending Machine System”
+3. Place the **Actors** outside the system box: Customer, Maintenance Staff, Admin
+4. Place the **Use Cases** inside the box (as listed above)
+5. Use **solid lines** to connect actors to their associated use cases
+6. Add **<<include>>**, **<<extend>>**, and **generalization** relationships as shown above
+
+---
+
+Would you like this in `.txt` format too for StarUML reference?

@@ -1,0 +1,134 @@
+Absolutely! Here's a clear and detailed **Activity Diagram for a Banking System**, including:
+
+* **Activities & action states**
+* **Transitions**
+* **Decision nodes (branching)**
+* **Forks & joins**
+* **Swimlanes (actors)**
+* And step-by-step layout so you can easily create it in **StarUML**.
+
+---
+
+## 🏦 **Activity Diagram – Banking System**
+
+---
+
+### 🎯 **Swimlanes (Roles)**
+
+| Swimlane           | Actor                                 |
+| ------------------ | ------------------------------------- |
+| 1️⃣ Customer       | Interacts with banking services       |
+| 2️⃣ Banking System | Processes and manages transactions    |
+| 3️⃣ Bank Database  | Handles data verification and storage |
+
+---
+
+## 🔁 **Activity Flow Steps**
+
+### ✅ **1. Start**
+
+* **Initial Node (●)** in **Customer** swimlane
+
+---
+
+### ✅ **2. Login/Authenticate**
+
+* `Enter Credentials` (Customer)
+* → `Verify Credentials` (System)
+
+---
+
+### ✅ **3. Decision: Is Login Valid?**
+
+* Add a **Decision Node (◇)**:
+
+  * **\[Yes]** → Continue
+  * **\[No]** → `Show Error` → Back to `Enter Credentials`
+
+---
+
+### ✅ **4. Show Services Menu**
+
+* If valid login → `Display Services Menu`
+* Customer chooses: **\[Check Balance]**, **\[Deposit]**, **\[Withdraw]**, **\[Transfer Funds]**
+
+---
+
+### ✅ **5. Fork – Different Transactions**
+
+Use a **Fork Node** to branch:
+
+* ➡️ `Check Balance` → `Retrieve Balance` (Database)
+* ➡️ `Deposit` → `Enter Amount` → `Update Account` (Database)
+* ➡️ `Withdraw` → `Enter Amount` → `Check Funds` → `Dispense Cash` → `Update Account`
+* ➡️ `Transfer Funds` → `Enter Details` → `Validate Beneficiary` → `Transfer Amount` → `Update Accounts`
+
+---
+
+### ✅ **6. Join (Post Transaction)**
+
+* All paths → **Join Node**
+* → `Generate Transaction Receipt`
+* → `Logout`
+
+---
+
+### ✅ **7. End**
+
+* **Final Node (◎)**
+
+---
+
+## 🖼️ ASCII Flow Summary
+
+```
+[Start]
+  ↓
+[Enter Credentials]
+  ↓
+[Verify Credentials]
+  ↓
+ ┌────────────┐
+ │Login Valid?│
+ └────────────┘
+  ↓Yes       ↓No
+[Display     [Show Error]
+ Menu]            ↓
+  ↓           [Re-enter Credentials]
+ ─────── Fork ───────
+ ↓        ↓       ↓         ↓
+[Check   [Deposit][Withdraw][Transfer]
+ Balance] ↓       ↓         ↓
+  ↓     [Enter] [Enter]   [Enter Details]
+[Retrieve][Update][Check] [Validate]
+ Balance  Account Funds   Beneficiary
+                         ↓
+                [Transfer Amount]
+                        ↓
+                  [Update Accounts]
+ ─────── Join ───────
+        ↓
+[Generate Receipt]
+        ↓
+     [Logout]
+        ↓
+       [End]
+```
+
+---
+
+## 🛠️ **How to Build in StarUML**
+
+1. **Create new Activity Diagram**
+2. Add **3 Swimlanes**: Customer, System, Bank Database
+3. Use:
+
+   * **Initial node (●)** and **Final node (◎)**
+   * **Rounded rectangles** for actions
+   * **Diamond (◇)** for decisions like `[Valid]` / `[Invalid]`
+   * **Fork/Join** nodes as **thick horizontal bars**
+4. Connect with **arrows (transitions)** showing the flow
+
+---
+
+Would you like this as a downloadable **`.txt` file** or a visual diagram to import into StarUML?

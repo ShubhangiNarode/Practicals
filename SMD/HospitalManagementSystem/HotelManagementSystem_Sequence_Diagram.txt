@@ -1,0 +1,111 @@
+Sure! Below is a complete **step-by-step guide** to create a **Sequence Diagram for a Hotel Management System** in **StarUML**. The diagram includes:
+
+✅ Objects
+✅ Synchronous & Asynchronous Messages
+✅ Return Messages
+✅ Interaction Fragments (`alt`, `opt`, `loop`)
+✅ Focus of Control (automatic in StarUML)
+
+---
+
+### ⚙️ **Step-by-Step in StarUML**
+
+#### 🧩 1. **Create a Sequence Diagram**
+
+* Open **StarUML**
+* Go to: `Model` > `Add Diagram` > `Sequence Diagram`
+* Rename the diagram: **Hotel Management - Sequence Diagram**
+
+---
+
+#### 👥 2. **Add Lifelines (Objects / Participants)**
+
+Use the **Lifeline Tool** to add:
+
+1. `Guest`
+2. `Receptionist`
+3. `HotelSystem`
+4. `RoomDatabase`
+5. `PaymentService`
+6. `NotificationService`
+
+---
+
+#### 🔁 3. **Add Messages (With Synchronization)**
+
+---
+
+##### ✅ **Check Room Availability (Synchronous)**
+
+* `Guest` → `Receptionist`: `requestRoomAvailability()`
+* `Receptionist` → `HotelSystem`: `checkAvailability(date, type)`
+* `HotelSystem` → `RoomDatabase`: `getAvailableRooms()`
+* `RoomDatabase` → `HotelSystem`: `availableRooms`
+* `HotelSystem` → `Receptionist`: `showAvailableRooms()`
+* `Receptionist` → `Guest`: `displayRooms()`
+
+---
+
+##### ✅ **Room Booking (Includes opt & async)**
+
+* `Guest` → `Receptionist`: `bookRoom(roomId, date)`
+* `Receptionist` → `HotelSystem`: `createBooking()`
+* `HotelSystem` → `PaymentService`: `initiatePayment()`
+* `PaymentService` → `HotelSystem`: `paymentStatus()` (return)
+* `HotelSystem` → `NotificationService`: `sendConfirmationSMS()`
+  → **Asynchronous Message**
+* `NotificationService` → `Guest`: `SMS Confirmation`
+  → **Return Message**
+
+---
+
+#### 🧩 4. **Add Interaction Fragments**
+
+---
+
+##### 🔄 **loop** – Retry if room not available
+
+* Wrap `checkAvailability` inside a **loop**
+* Guard condition: `while rooms not available`
+
+---
+
+##### ➕ **alt** – Payment success/failure
+
+* Add **alt** fragment around `paymentStatus()`
+
+  * **Option 1:** Payment Success → proceed with booking
+  * **Option 2:** Payment Failed → `showError()`
+
+---
+
+##### ➕ **opt** – Send Confirmation only if booking successful
+
+* Add **opt** fragment for sending confirmation SMS
+* Guard: `[if booking confirmed]`
+
+---
+
+### 🧾 Summary of Message Types
+
+| From                | To                  | Message                   | Type        |
+| ------------------- | ------------------- | ------------------------- | ----------- |
+| Guest               | Receptionist        | requestRoomAvailability() | Synchronous |
+| Receptionist        | HotelSystem         | checkAvailability()       | Synchronous |
+| HotelSystem         | RoomDatabase        | getAvailableRooms()       | Synchronous |
+| Guest               | Receptionist        | bookRoom()                | Synchronous |
+| HotelSystem         | PaymentService      | initiatePayment()         | Synchronous |
+| PaymentService      | HotelSystem         | paymentStatus()           | Return      |
+| HotelSystem         | NotificationService | sendConfirmationSMS()     | **Async**   |
+| NotificationService | Guest               | SMS Confirmation          | Return      |
+
+---
+
+### ✳️ Focus of Control
+
+* StarUML automatically adds the **Focus of Control** box when you draw messages between lifelines.
+* This helps show which object is currently processing or handling a request.
+
+---
+
+Would you like me to create this diagram as an image as well?

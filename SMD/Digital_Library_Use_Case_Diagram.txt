@@ -1,0 +1,43 @@
+
+Use Case Diagram for Digital Library System - StarUML Instructions
+
+Step 1: Create New Project
+- Open StarUML.
+- Click on File > New > UML Model.
+
+Step 2: Add a Use Case Diagram
+- In the Model Explorer, right-click on 'Model' > Add Diagram > Use Case Diagram.
+- Rename the diagram to "Digital Library System".
+
+Step 3: Add System Boundary
+- From the toolbox, drag the "System" element.
+- Rename it to: Digital Library System.
+
+Step 4: Add Actors (Outside System Boundary)
+- Guest
+- Member (inherits from Guest using Generalization)
+- Admin
+
+Step 5: Add Use Cases (Inside System Boundary)
+- Search Catalog
+- Login
+- Download Book
+- View Book
+- Manage Account
+- Upload Book
+- Approve Access
+
+Step 6: Associate Actors with Use Cases
+- Guest --> Search Catalog
+- Member --> Login, Download Book, Manage Account
+- Admin --> Login, Manage Account, Upload Book, Approve Access
+
+Step 7: Add <<include>> Relationship
+- Download Book <<include>> View Book
+
+Step 8: Add <<extend>> Relationship
+- Login <<extend>> Manage Account
+
+Step 9: Add Generalization
+- Member inherits from Guest (Generalization arrow from Member to Guest)
+

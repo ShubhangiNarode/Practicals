@@ -1,0 +1,48 @@
+
+Use Case Diagram for Online Shopping System - StarUML Instructions
+
+Step 1: Create New Project
+- Open StarUML.
+- Click on File > New > UML Model.
+
+Step 2: Add a Use Case Diagram
+- In the Model Explorer, right-click on 'Model' > Add Diagram > Use Case Diagram.
+- Rename the diagram to "Online Shopping System".
+
+Step 3: Add System Boundary
+- From the toolbox, drag the "System" element.
+- Rename it to: Online Shopping System.
+
+Step 4: Add Actors (Outside System Boundary)
+- Customer
+- Registered User (inherits from Customer)
+- Admin
+- Payment Gateway (External System)
+
+Step 5: Add Use Cases (Inside System Boundary)
+1. Browse Products
+2. Register
+3. Login
+4. Add to Cart
+5. Place Order
+6. Make Payment
+7. Track Order
+8. Cancel Order
+9. Manage Products (Admin only)
+
+Step 6: Associate Actors with Use Cases
+- Customer --> Browse Products, Register
+- Registered User --> Login, Add to Cart, Place Order, Make Payment, Track Order, Cancel Order
+- Admin --> Login, Manage Products
+- Payment Gateway --> Make Payment
+
+Step 7: Add <<include>> Relationships
+- Place Order <<include>> Add to Cart
+- Place Order <<include>> Make Payment
+
+Step 8: Add <<extend>> Relationships
+- Cancel Order <<extend>> Track Order
+
+Step 9: Add Generalization
+- Registered User inherits from Customer
+

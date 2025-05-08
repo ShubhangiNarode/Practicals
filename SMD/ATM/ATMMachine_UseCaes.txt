@@ -1,0 +1,80 @@
+Sure! Here's a complete **Use Case Diagram specification for an ATM (Automated Teller Machine) System**, designed for **StarUML**, including **actors**, **8–9 use cases**, and **UML relationships** like `<<include>>`, `<<extend>>`, and **generalization**, along with the **system boundary**.
+
+---
+
+### ✅ **Use Case Diagram – ATM Machine System**
+
+#### 📌 **Actors:**
+
+* **User**
+* **Bank Server (External System)**
+* **Technician**
+* **Admin**
+
+---
+
+### 📌 **Use Cases (8–9):**
+
+1. Insert Card
+2. Authenticate User
+3. Withdraw Cash
+4. Deposit Cash
+5. Check Balance
+6. Transfer Funds
+7. Print Receipt
+8. Eject Card
+9. Display Error
+
+---
+
+### 📌 **System Boundary:**
+
+*Label as:* **ATM Machine System**
+
+---
+
+### 📌 **Actor–Use Case Associations:**
+
+* **User** → Insert Card, Authenticate User, Withdraw Cash, Deposit Cash, Check Balance, Transfer Funds, Print Receipt, Eject Card
+* **Bank Server** → Authenticate User, Withdraw Cash, Deposit Cash, Check Balance, Transfer Funds
+* **Technician** → Display Error
+* **Admin** → Display Error
+
+---
+
+### 📌 **`<<include>>` Relationships:**
+
+* Withdraw Cash `<<include>>` Authenticate User
+* Deposit Cash `<<include>>` Authenticate User
+* Transfer Funds `<<include>>` Authenticate User
+* Print Receipt `<<include>>` Withdraw Cash
+* Eject Card `<<include>>` Print Receipt
+
+---
+
+### 📌 **`<<extend>>` Relationships:**
+
+* Display Error `<<extend>>` Withdraw Cash
+* Display Error `<<extend>>` Deposit Cash
+
+---
+
+### 📌 **Generalization (Optional):**
+
+* **Admin** and **Technician** can be generalized under **Maintenance Staff**
+
+---
+
+### 📌 **StarUML Drawing Instructions:**
+
+1. Open StarUML and create a new **Use Case Diagram**
+2. Draw the **System Boundary box** and label it **"ATM Machine System"**
+3. Place **actors** outside the boundary: User, Bank Server, Technician, Admin
+4. Place the **use cases** inside the system boundary (as listed above)
+5. Draw **associations (lines)** between actors and their respective use cases
+6. Add `<<include>>` and `<<extend>>` relationships
+7. Use **generalization** arrow if applying the "Maintenance Staff" abstraction
+
+---
+
+Would you like this as a downloadable `.txt` file for offline StarUML reference?

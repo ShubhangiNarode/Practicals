@@ -1,0 +1,111 @@
+Sure! Here's a **complete step-by-step guide** to create a **Sequence Diagram for a Railway Management System** in **StarUML**. It includes:
+
+✅ Objects
+✅ Synchronous & Asynchronous Messages
+✅ Return Messages
+✅ Interaction Operators (`alt`, `opt`, `loop`)
+✅ Focus of Control
+
+---
+
+## 🎯 **Sequence Diagram: Railway Management System**
+
+### 🔧 **Step 1: Create Sequence Diagram**
+
+* Open **StarUML**
+* Go to: `Model > Add Diagram > Sequence Diagram`
+* Name it: **Railway Reservation Sequence Diagram**
+
+---
+
+### 👤 **Step 2: Add Lifelines (Objects/Participants)**
+
+Use **Lifeline Tool** to add:
+
+1. `Passenger`
+2. `ReservationClerk` or `OnlinePortal`
+3. `RailwaySystem`
+4. `TrainScheduleService`
+5. `PaymentGateway`
+6. `NotificationService`
+
+---
+
+### 🔁 **Step 3: Add Messages**
+
+---
+
+#### ✅ **Check Train Availability (Synchronous)**
+
+* `Passenger → ReservationClerk`: `searchTrains(source, destination, date)`
+* `ReservationClerk → RailwaySystem`: `checkAvailability()`
+* `RailwaySystem → TrainScheduleService`: `getTrainsList()`
+* `TrainScheduleService → RailwaySystem`: `trainList` (return)
+* `RailwaySystem → ReservationClerk`: `displayTrains()`
+* `ReservationClerk → Passenger`: `showAvailableTrains()`
+
+---
+
+#### ✅ **Book Ticket (Synchronous + alt)**
+
+* `Passenger → ReservationClerk`: `bookTicket(trainId, class)`
+* `ReservationClerk → RailwaySystem`: `initiateBooking()`
+* `RailwaySystem → PaymentGateway`: `processPayment()`
+* Add **alt fragment**:
+
+  * **\[payment successful]**: proceed to confirm booking
+  * **\[payment failed]**: send error message
+
+---
+
+#### ✅ **Send Confirmation (Asynchronous + opt)**
+
+* If payment success (inside `opt` fragment):
+
+  * `RailwaySystem → NotificationService`: `sendConfirmationEmail()`
+    **Asynchronous**
+  * `NotificationService → Passenger`: `Email Sent` (return)
+
+---
+
+#### 🔁 **Step 4: Add Interaction Fragments**
+
+| Fragment | Use                                       | Guard/Condition              |
+| -------- | ----------------------------------------- | ---------------------------- |
+| `loop`   | Retry train search if no trains available | `while trainList empty`      |
+| `alt`    | Payment success or failure                | `[if paymentSuccess]` / else |
+| `opt`    | Send confirmation only on success         | `[bookingConfirmed]`         |
+
+---
+
+### 🧾 **Message Table Summary**
+
+| From                | To                   | Message                 | Type        |
+| ------------------- | -------------------- | ----------------------- | ----------- |
+| Passenger           | ReservationClerk     | searchTrains()          | Synchronous |
+| ReservationClerk    | RailwaySystem        | checkAvailability()     | Synchronous |
+| RailwaySystem       | TrainScheduleService | getTrainsList()         | Synchronous |
+| Passenger           | ReservationClerk     | bookTicket()            | Synchronous |
+| RailwaySystem       | PaymentGateway       | processPayment()        | Synchronous |
+| RailwaySystem       | NotificationService  | sendConfirmationEmail() | **Async**   |
+| NotificationService | Passenger            | Email Sent              | Return      |
+
+---
+
+### ✳️ Focus of Control
+
+* In StarUML, when you add messages between lifelines, the vertical boxes (focus of control) are added automatically to show the active time for each object.
+
+---
+
+## ⭐ **Optional Enhancements**
+
+You can also add:
+
+* An actor lifeline for **Admin** (to update schedules).
+* `loop` fragment for retrying failed payments.
+* `create` message when a ticket is generated (optional).
+
+---
+
+Would you like an image version of this diagram for reference?

@@ -1,0 +1,107 @@
+Here's a full **step-by-step guide** to create a **Sequence Diagram for Library Management System** in **StarUML**. The diagram will include:
+
+✅ **Objects**
+✅ **Synchronous & Asynchronous messages**
+✅ **Return messages**
+✅ **Interaction Fragments** (like `alt`, `opt`, `loop`)
+
+---
+
+### ⚙️ **Step-by-Step in StarUML:**
+
+#### 🧩 1. **Create a Sequence Diagram**
+
+* Open **StarUML**
+* Go to: `Model` > `Add Diagram` > `Sequence Diagram`
+* Rename the diagram to: `Library Management - Sequence Diagram`
+
+---
+
+#### 👥 2. **Add Lifelines (Objects / Participants)**
+
+Use the **Lifeline Tool** and add these objects (top-to-bottom alignment):
+
+1. `User`
+2. `LoginService`
+3. `LibrarySystem`
+4. `BookDatabase`
+5. `NotificationService`
+
+---
+
+#### 🔁 3. **Add Messages (Use Synchronous & Asynchronous)**
+
+##### ✅ Login Use Case (Synchronous)
+
+* From `User` to `LoginService`: `enterCredentials()`
+  → **Synchronous Message**
+* From `LoginService` to `LibrarySystem`: `validateUser()`
+  → **Synchronous Message**
+* From `LibrarySystem` back to `LoginService`: `loginSuccess()`
+  → **Return Message**
+* From `LoginService` to `User`: `displayDashboard()`
+  → **Return Message**
+
+---
+
+##### ✅ Search Book (Synchronous + Return)
+
+* `User` to `LibrarySystem`: `searchBook(title)`
+* `LibrarySystem` to `BookDatabase`: `fetchBookDetails()`
+* `BookDatabase` to `LibrarySystem`: `bookInfo`
+* `LibrarySystem` to `User`: `displayBookInfo()`
+
+---
+
+##### ✅ Reserve Book (Asynchronous + Notification)
+
+* `User` to `LibrarySystem`: `reserveBook(bookId)`
+  → **Synchronous**
+* `LibrarySystem` to `NotificationService`: `sendReservationConfirmation()`
+  → **Asynchronous**
+* `NotificationService` to `User`: `SMS: Reservation Confirmed`
+  → **Return Message**
+
+---
+
+#### 🧩 4. **Add Interaction Fragments**
+
+##### ➕ `alt` Fragment (If user valid or invalid)
+
+* Drag **Interaction Operand (alt)** around `validateUser()`
+* First block: `Valid Credentials`
+* Second block: `Invalid Credentials` with `showError()`
+
+##### ➕ `loop` Fragment (For search retries)
+
+* Wrap the searchBook sequence in a **loop**
+* Label: `While book not found`
+
+##### ➕ `opt` Fragment (If book available)
+
+* Wrap `reserveBook` + `sendConfirmation` in **opt**
+* Label: `If Book Available`
+
+---
+
+#### 💡 5. **Focus of Control**
+
+StarUML shows **activation boxes** automatically when you create messages (these indicate control/focus).
+
+---
+
+### 🧾 Example Messages Summary
+
+| From          | To                  | Message                       | Type         |
+| ------------- | ------------------- | ----------------------------- | ------------ |
+| User          | LoginService        | enterCredentials()            | Synchronous  |
+| LoginService  | LibrarySystem       | validateUser()                | Synchronous  |
+| LibrarySystem | LoginService        | loginSuccess()                | Return       |
+| User          | LibrarySystem       | searchBook(title)             | Synchronous  |
+| LibrarySystem | BookDatabase        | fetchBookDetails()            | Synchronous  |
+| BookDatabase  | LibrarySystem       | bookInfo                      | Return       |
+| LibrarySystem | NotificationService | sendReservationConfirmation() | Asynchronous |
+
+---
+
+Would you like me to generate a **diagram image** based on this layout?

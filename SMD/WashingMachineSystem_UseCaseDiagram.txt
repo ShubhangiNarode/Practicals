@@ -1,0 +1,46 @@
+
+Use Case Diagram – Washing Machine System
+
+Actors:
+- User
+- Maintenance Technician
+- Admin/System Monitor
+
+Use Cases:
+1. Power On/Off
+2. Select Wash Mode
+3. Start Washing
+4. Pause/Resume
+5. Set Timer
+6. Drain Water
+7. Self-Diagnose Fault
+8. Display Error
+9. Notify Maintenance
+
+System Boundary:
+- Washing Machine System
+
+Actor–Use Case Associations:
+- User → Power On/Off, Select Wash Mode, Start Washing, Pause/Resume, Set Timer, Drain Water
+- Maintenance Technician → Self-Diagnose Fault, Notify Maintenance
+- Admin/System Monitor → Display Error, Notify Maintenance
+
+<<include>> Relationships:
+- Start Washing <<include>> Select Wash Mode
+- Drain Water <<include>> Pause/Resume
+- Notify Maintenance <<include>> Display Error
+
+<<extend>> Relationships:
+- Self-Diagnose Fault <<extend>> Start Washing
+- Display Error <<extend>> Self-Diagnose Fault
+
+Generalization (Optional):
+- Admin and Technician can be generalized under "System Operator"
+
+StarUML Drawing Instructions:
+1. Open StarUML and create a new Use Case Diagram
+2. Add the System Boundary labeled "Washing Machine System"
+3. Place actors outside the boundary: User, Maintenance Technician, Admin
+4. Place use cases inside the system boundary (as listed above)
+5. Connect actors to the use cases with solid lines
+6. Use <<include>>, <<extend>>, and generalization arrows where specified

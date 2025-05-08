@@ -1,0 +1,146 @@
+Absolutely! Here's a **step-by-step and clearly labeled Activity Diagram for a Railway Management System**, complete with **activities, action states, transitions, decision branches, forking, joining, swimlanes**, and **object usage**.
+
+---
+
+## 🚆 **Activity Diagram – Railway Management System**
+
+### 🎯 Swimlanes (Roles)
+
+Divide your activity diagram into **swimlanes** (vertical lanes):
+
+| Swimlane             | Actor/Role                                  |
+| -------------------- | ------------------------------------------- |
+| 1️⃣ Passenger        | Uses the system to book/manage tickets      |
+| 2️⃣ Ticketing System | Handles bookings, payments, status          |
+| 3️⃣ Admin/Operator   | Manages schedule, trains, and cancellations |
+
+---
+
+## 🔁 Activity Flow Breakdown
+
+### ✅ **1. Start**
+
+* Place an **Initial Node (●)** in the **Passenger** swimlane.
+
+---
+
+### ✅ **2. Search Train**
+
+* Add **action state**: `Search Train`
+* ⬇️ Transition to: `View Train Schedule`
+
+---
+
+### ✅ **3. Decision: Is Train Available?**
+
+* Add a **Decision Node (◇)**
+* From `View Train Schedule` → ⬇️ Decision node
+
+  * **\[Available]** → ➡️ `Select Train`
+  * **\[Not Available]** → ➡️ `Show Message: No Train Available` → End
+
+---
+
+### ✅ **4. Proceed to Booking**
+
+* From `Select Train` → ⬇️ `Enter Passenger Details` → `Make Payment`
+
+---
+
+### ✅ **5. Include Object Node**
+
+* After `Make Payment` → ⬇️ **Object Node**: `Payment Receipt`
+
+---
+
+### ✅ **6. Confirm Booking**
+
+* From `Payment Receipt` → `Generate Ticket` → ⬇️ `Send Confirmation` (email/SMS)
+
+---
+
+### ✅ **7. Fork: Parallel Actions**
+
+After sending confirmation:
+
+* Add **Fork Node** (horizontal bar)
+* ➡️ Path 1: `Update Seat Availability` (System)
+* ➡️ Path 2: `Update Booking History` (System)
+
+---
+
+### ✅ **8. Join and End**
+
+* Both above → ⬇️ **Join Node**
+* ⬇️ → `End` node (◎)
+
+---
+
+### ✅ **Optional Admin Side Flow**
+
+In **Admin swimlane**:
+
+* `Login Admin`
+* `Modify Train Schedule`
+* `Cancel Train`
+* `Notify Affected Passengers` (fork/join pattern if parallel)
+
+---
+
+## 🔄 Visualized Mini Flow (ASCII Style)
+
+```
+[Start]
+  ↓
+[Search Train]
+  ↓
+[View Train Schedule]
+  ↓
+ ┌──────────────┐
+ │Decision Node │
+ └──────────────┘
+   ↓         ↓
+[Available] [Not Available]
+   ↓               ↓
+[Select Train]   [Show Message]
+   ↓
+[Enter Passenger Details]
+   ↓
+[Make Payment]
+   ↓
+[Payment Receipt]
+   ↓
+[Generate Ticket]
+   ↓
+[Send Confirmation]
+   ↓
+ ── Fork ──
+ ↓        ↓
+[Update   [Update
+ Seat      Booking
+Avail.]    History]
+ ↓         ↓
+ ── Join ──
+     ↓
+   [End]
+```
+
+---
+
+## 🛠️ How to Build This in StarUML:
+
+1. Create a new **Activity Diagram**
+2. Add **Swimlanes** for: Passenger, System, Admin
+3. Use:
+
+   * **Initial node (●)** at the top
+   * **Action states** (rounded rectangles)
+   * **Decision node (◇)** for branching
+   * **Object node** (rectangle with <<object>> label)
+   * **Fork/Join**: thick horizontal bars
+   * **Final node (◎)** at the bottom
+4. Label all transitions like `[Available]`, `[Not Available]`, etc.
+
+---
+
+Would you like a **StarUML-compatible text file** or **image diagram** version of this as well?

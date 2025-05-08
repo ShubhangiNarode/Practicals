@@ -1,0 +1,43 @@
+
+Use Case Diagram for Library Management System - StarUML Instructions
+
+Step 1: Create New Project
+- Open StarUML.
+- Click on File > New > UML Model.
+
+Step 2: Add a Use Case Diagram
+- In the Model Explorer, right-click on 'Model' > Add Diagram > Use Case Diagram.
+- Rename the diagram to "Library Management System".
+
+Step 3: Add System Boundary
+- From the toolbox, drag the "System" element.
+- Rename it to: Library Management System.
+
+Step 4: Add Actors (Outside System Boundary)
+- Visitor
+- Member (inherits from Visitor using Generalization)
+- Librarian
+
+Step 5: Add Use Cases (Inside System Boundary)
+- Search Book Catalog
+- Register
+- Borrow Book
+- Return Book
+- Pay Fine
+- Add/Remove Book
+- Manage User Accounts
+
+Step 6: Associate Actors with Use Cases
+- Visitor --> Search Book Catalog
+- Member --> Register, Borrow Book, Return Book, Pay Fine
+- Librarian --> Add/Remove Book, Manage User Accounts, Pay Fine
+
+Step 7: Add <<include>> Relationship
+- Borrow Book <<include>> Search Book Catalog
+
+Step 8: Add <<extend>> Relationship
+- Return Book <<extend>> Pay Fine
+
+Step 9: Add Generalization
+- Member inherits from Visitor (Generalization arrow from Member to Visitor)
+

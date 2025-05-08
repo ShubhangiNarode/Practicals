@@ -1,0 +1,151 @@
+Sure! Here's a **clearly structured Activity Diagram for an ATM Machine System**, using all key UML components: **activities**, **states**, **transitions**, **decision nodes**, **fork/join**, **objects**, and **swimlanes**, laid out step by step so it's easy to implement in **StarUML**.
+
+---
+
+## 🏧 **Activity Diagram – ATM Machine System**
+
+### 🎯 Swimlanes (Roles)
+
+| Swimlane        | Actor/System                                         |
+| --------------- | ---------------------------------------------------- |
+| 1️⃣ User        | Uses the ATM                                         |
+| 2️⃣ ATM System  | Handles processing, authentication, and transactions |
+| 3️⃣ Bank Server | Performs verification and updates                    |
+
+---
+
+## 🔁 Activity Flow Breakdown
+
+### ✅ **1. Start**
+
+* Add an **Initial Node (●)** in the **User** swimlane
+
+---
+
+### ✅ **2. Insert ATM Card**
+
+* Add action: `Insert ATM Card` (User)
+
+---
+
+### ✅ **3. Authenticate PIN**
+
+* Transition to: `Enter PIN` (User)
+* Then → `Validate PIN` (ATM System)
+
+---
+
+### ✅ **4. Decision: Is PIN Correct?**
+
+* Add **Decision Node (◇)** in ATM System
+
+  * **\[Valid]** → Continue
+  * **\[Invalid]** → `Show Error` → Retry or End
+
+---
+
+### ✅ **5. Show Transaction Options**
+
+* After valid PIN → `Display Menu Options` (ATM System)
+* User selects action: `Select Transaction` (e.g., withdraw, check balance)
+
+---
+
+### ✅ **6. Fork – Parallel Transaction Flow**
+
+* Add **Fork Node** (thick bar) for:
+
+  * ➡️ `Request Account Info` (Bank Server)
+  * ➡️ `Process User Selection` (ATM System)
+
+---
+
+### ✅ **7. Join Parallel Paths**
+
+* Both → Join at a **Join Node** → Continue to:
+
+  * **Decision Node** for selected action:
+
+    * **\[Withdraw]** → `Enter Amount` → `Validate Funds` → `Dispense Cash`
+    * **\[Check Balance]** → `Show Balance`
+    * **\[Deposit]** → `Insert Cash` → `Update Balance`
+    * **\[Exit]** → End
+
+---
+
+### ✅ **8. Update Records**
+
+* After transactions → `Update Account Info` (Bank Server)
+
+---
+
+### ✅ **9. End Transaction**
+
+* `Print Receipt` → `Eject Card` → **Final Node (◎)**
+
+---
+
+## 🖼️ ASCII-Style Flow Layout
+
+```
+[Start]
+  ↓
+[Insert Card]
+  ↓
+[Enter PIN]
+  ↓
+[Validate PIN]
+  ↓
+ ┌──────────────┐
+ │ Decision:    │
+ │ PIN Valid?   │
+ └──────────────┘
+  ↓Yes       ↓No
+[Display     [Show Error]
+ Menu]           ↓
+  ↓            [Retry or End]
+[Select Transaction]
+  ↓
+ ─────── Fork ───────
+ ↓                 ↓
+[Request Info]   [Process Selection]
+     ↓                 ↓
+ ─────── Join ───────
+        ↓
+ ┌───────────────────────────┐
+ │ Decision: Which Option?   │
+ └───────────────────────────┘
+  ↓Withdraw        ↓Balance
+[Enter Amount]   [Show Balance]
+  ↓
+[Validate Funds]
+  ↓
+[Dispense Cash]
+  ↓
+[Update Records]
+  ↓
+[Print Receipt]
+  ↓
+[Eject Card]
+  ↓
+[End]
+```
+
+---
+
+## 🛠️ Instructions for StarUML
+
+1. Create a **New Activity Diagram**
+2. Add **3 Swimlanes**: User, ATM System, Bank Server
+3. Use:
+
+   * **Initial node (●)** and **Final node (◎)**
+   * **Action states** (rounded rectangles)
+   * **Decision nodes (◇)** with labeled transitions like `[Valid]`, `[Withdraw]`
+   * **Fork and Join** bars (horizontal thick lines)
+   * **Object nodes** for data like `Account`, `Cash`, `Receipt`
+4. Connect all transitions using arrows
+
+---
+
+Would you like this as a **StarUML `.txt` file** or a **diagram image** to go with it?

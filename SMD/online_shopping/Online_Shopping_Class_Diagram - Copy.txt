@@ -1,0 +1,188 @@
+Here's a **complete class diagram** for an **Online Shopping System** that includes:
+
+✅ Class names
+✅ Attributes with data types
+✅ Operations
+✅ Relationships: **Association**, **Aggregation**, **Composition**, **Generalization**, **Dependency**
+✅ **Multiplicity** for all relationships
+✅ Clear **structure for oral/written exams** and **StarUML**
+
+---
+
+### 🛒 **Class Diagram: Online Shopping System**
+
+---
+
+#### 1. **ShoppingSystem**
+
+* Attributes:
+
+  * `systemName: String`
+  * `version: String`
+* Operations:
+
+  * `manageUsers()`
+  * `manageOrders()`
+
+**Relationships**:
+
+* Aggregation with `Product` (1..1 to 0..\*)
+* Association with `Customer` (1..1 to 0..\*)
+* Association with `Admin` (1..1 to 1..\*)
+
+---
+
+#### 2. **Customer**
+
+* Attributes:
+
+  * `customerId: int`
+  * `name: String`
+  * `email: String`
+* Operations:
+
+  * `register()`
+  * `login()`
+  * `placeOrder()`
+
+**Relationships**:
+
+* Association with `Order` (1..1 to 0..\*)
+* Dependency on `Product` (for browsing)
+
+---
+
+#### 3. **Product**
+
+* Attributes:
+
+  * `productId: int`
+  * `productName: String`
+  * `price: float`
+  * `stockQty: int`
+* Operations:
+
+  * `updateStock()`
+  * `getDetails()`
+
+**Relationships**:
+
+* Aggregation in `ShoppingSystem` (1..1 to 0..\*)
+* Association with `Category` (1..1 to 1..1)
+* Dependency from `Customer` (for viewing)
+
+---
+
+#### 4. **Category**
+
+* Attributes:
+
+  * `categoryId: int`
+  * `categoryName: String`
+* Operations:
+
+  * `addCategory()`
+  * `listProducts()`
+
+---
+
+#### 5. **Order**
+
+* Attributes:
+
+  * `orderId: int`
+  * `orderDate: String`
+  * `status: String`
+* Operations:
+
+  * `trackOrder()`
+  * `cancelOrder()`
+
+**Relationships**:
+
+* Composition with `OrderItem` (1..1 to 1..\*)
+* Association with `Payment` (1..1 to 1..1)
+* Association with `Customer` (1..1 to 1..1)
+
+---
+
+#### 6. **OrderItem**
+
+* Attributes:
+
+  * `itemId: int`
+  * `quantity: int`
+  * `price: float`
+* Operations:
+
+  * `calculateItemTotal()`
+
+**Relationships**:
+
+* Composition in `Order` (1..1 to 1..\*)
+* Association with `Product` (1..1 to 1..1)
+
+---
+
+#### 7. **Payment**
+
+* Attributes:
+
+  * `paymentId: int`
+  * `amount: float`
+  * `method: String`
+  * `status: String`
+* Operations:
+
+  * `processPayment()`
+  * `refundPayment()`
+
+---
+
+#### 8. **Admin**
+
+* Attributes:
+
+  * `adminId: int`
+  * `username: String`
+  * `role: String`
+* Operations:
+
+  * `addProduct()`
+  * `deleteProduct()`
+  * `generateReport()`
+
+**Relationships**:
+
+* Generalization from `InventoryManager` and `OrderManager`
+
+---
+
+#### 9. **InventoryManager** *(inherits Admin)*
+
+* Operations:
+
+  * `manageInventory()`
+
+---
+
+#### 10. **OrderManager** *(inherits Admin)*
+
+* Operations:
+
+  * `manageOrders()`
+
+---
+
+💡 **Short Oral Definitions**:
+
+* **Association**: Regular relation (Customer ↔ Order)
+* **Aggregation**: Whole-part, part survives (System → Product)
+* **Composition**: Whole-part, part doesn't survive (Order → OrderItem)
+* **Generalization**: Inheritance (Admin → InventoryManager)
+* **Dependency**: Temporary use (Customer uses Product)
+* **Multiplicity**: Specifies number of objects in the relation (e.g., 1..1 to 0..\*)
+
+---
+
+Would you like this turned into a **StarUML diagram** or exported as a **text file** for StarUML import?

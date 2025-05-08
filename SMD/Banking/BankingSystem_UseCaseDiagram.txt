@@ -1,0 +1,39 @@
+
+Use Case Diagram – Banking System
+
+Actors:
+- Customer
+- Account Holder (inherits from Customer)
+- Bank Employee
+- ATM (External System)
+
+Use Cases:
+1. Register Account
+2. Login
+3. Check Balance
+4. Deposit Money
+5. Withdraw Money
+6. Transfer Funds
+7. Pay Bills
+8. Generate Account Statement
+9. Block Card
+
+Relationships:
+- Account Holder → Login, Check Balance, Deposit Money, Withdraw Money, Transfer Funds, Pay Bills, Generate Account Statement, Block Card
+- Customer → Register Account
+- Bank Employee → Register Account, Block Card
+- ATM → Withdraw Money, Check Balance
+
+<<include>> Relationships:
+- Transfer Funds <<include>> Login
+- Pay Bills <<include>> Login
+
+<<extend>> Relationships:
+- Block Card <<extend>> Withdraw Money
+- Generate Account Statement <<extend>> Check Balance
+
+Generalization:
+- Account Holder inherits from Customer
+
+System Name:
+- Banking System (as System Boundary Box)

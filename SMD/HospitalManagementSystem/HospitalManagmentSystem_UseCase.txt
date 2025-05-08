@@ -1,0 +1,77 @@
+Here is a complete **Use Case Diagram description** for a **Hospital Management System** with **8–9 use cases**, ideal for your practical using **StarUML**:
+
+---
+
+### ✅ **Use Case Diagram – Hospital Management System**
+
+#### 📌 **Actors:**
+
+* Patient
+* Doctor
+* Receptionist
+* Admin
+
+---
+
+### 📌 **Use Cases (8–9 total):**
+
+1. Register Patient
+2. Schedule Appointment
+3. Manage Patient Records
+4. Generate Bill
+5. Admit Patient
+6. Discharge Patient
+7. Prescribe Treatment
+8. View Medical History
+9. Assign Ward/Room
+
+---
+
+### 📌 **Actor–Use Case Associations:**
+
+* **Patient** → Register Patient, View Medical History, Schedule Appointment
+* **Doctor** → Prescribe Treatment, View Medical History, Manage Patient Records
+* **Receptionist** → Register Patient, Schedule Appointment, Generate Bill, Admit Patient, Discharge Patient, Assign Ward/Room
+* **Admin** → Manage Patient Records, Generate Bill, Assign Ward/Room
+
+---
+
+### 📌 **<<include>> Relationships:**
+
+* Schedule Appointment `<<include>>` Register Patient
+* Generate Bill `<<include>>` Discharge Patient
+
+---
+
+### 📌 **<<extend>> Relationships:**
+
+* View Medical History `<<extend>>` Prescribe Treatment
+* Admit Patient `<<extend>>` Schedule Appointment
+
+---
+
+### 📌 **Generalization (Optional):**
+
+* Admin and Receptionist can be generalized under **Hospital Staff**
+
+---
+
+### 📌 **System Boundary:**
+
+* Label as: **Hospital Management System**
+
+---
+
+### 🛠️ **Instructions to Draw in StarUML:**
+
+1. Open StarUML → New Use Case Diagram
+2. Draw a system boundary box named **Hospital Management System**
+3. Add actors: **Patient**, **Doctor**, **Receptionist**, **Admin** outside the box
+4. Add the 9 use cases **inside** the system
+5. Connect actors to their respective use cases with solid lines
+6. Use dotted arrows and labels to show `<<include>>` and `<<extend>>` relationships
+7. Use generalization arrow (triangle head) if you include a **Hospital Staff** base actor
+
+---
+
+Would you like me to save this as a `.txt` file for easy reference in StarUML?

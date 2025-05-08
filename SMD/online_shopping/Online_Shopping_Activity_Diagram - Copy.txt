@@ -1,0 +1,137 @@
+Certainly! Here's a **clearly structured Activity Diagram for an Online Shopping System**, with full usage of **activities, action states, transitions, decision branches, forking, joining, objects**, and **swimlanes** so you can recreate it step by step in **StarUML**.
+
+---
+
+## 🛒 **Activity Diagram – Online Shopping System**
+
+---
+
+### 🎯 **Swimlanes (Roles)**
+
+| Swimlane            | Role                                     |
+| ------------------- | ---------------------------------------- |
+| 1️⃣ Customer        | Browses and purchases items              |
+| 2️⃣ Shopping System | Handles product, cart, and payment logic |
+| 3️⃣ Payment Gateway | Verifies and processes payment           |
+
+---
+
+## 🔁 **Activity Flow Breakdown**
+
+### ✅ **1. Start**
+
+* Add an **Initial Node (●)** in the **Customer** swimlane
+
+---
+
+### ✅ **2. Browse and Add Products**
+
+* `Browse Products` → `View Product Details`
+* `Add to Cart`
+
+---
+
+### ✅ **3. View and Modify Cart**
+
+* `View Cart` → `Update Quantity` or `Remove Item`
+* ➡️ Then `Proceed to Checkout`
+
+---
+
+### ✅ **4. Decision: Is User Logged In?**
+
+* Add a **Decision Node (◇)** in the system swimlane
+
+  * **\[Yes]** → `Enter Shipping Info`
+  * **\[No]** → `Login/Register` → then → `Enter Shipping Info`
+
+---
+
+### ✅ **5. Enter Payment Info**
+
+* After shipping info → `Enter Payment Details`
+
+---
+
+### ✅ **6. Fork: Payment and Order Summary**
+
+* Add a **Fork Node**:
+
+  * ➡️ `Generate Order Summary`
+  * ➡️ `Process Payment` (goes to Payment Gateway)
+
+---
+
+### ✅ **7. Join: Payment Completion**
+
+* After both complete → Join at **Join Node** → `Send Confirmation`
+
+---
+
+### ✅ **8. Final Steps**
+
+* `Update Inventory`
+* `Send Order to Warehouse`
+* `Send Email Notification`
+* Then: **Final Node (◎)**
+
+---
+
+## 🖼️ ASCII-Style Flow Summary
+
+```
+[Start]
+  ↓
+[Browse Products]
+  ↓
+[View Product Details]
+  ↓
+[Add to Cart]
+  ↓
+[View Cart]
+  ↓
+ ┌────────────┐
+ │Decision:   │
+ │Logged In?  │
+ └────────────┘
+ ↓Yes       ↓No
+[Shipping Info] [Login/Register]
+       ↓               ↓
+   [Enter Payment Details]
+           ↓
+      ─── Fork ───
+      ↓         ↓
+[Generate  [Process
+ Summary]   Payment]
+      ↓         ↓
+     ─── Join ───
+           ↓
+ [Send Confirmation]
+     ↓
+[Update Inventory]
+     ↓
+[Send to Warehouse]
+     ↓
+[Email Notification]
+     ↓
+     [End]
+```
+
+---
+
+## 🛠️ **How to Build in StarUML**
+
+1. Open a new **Activity Diagram**
+2. Add **3 Swimlanes**: Customer, System, Payment Gateway
+3. Use:
+
+   * **Initial node (●)** and **Final node (◎)**
+   * **Rounded rectangles** for action states
+   * **Diamond (◇)** for decision nodes with labels like `[Yes]`, `[No]`
+   * **Fork/Join nodes** as **horizontal bars**
+   * **Object nodes** (optional): `Cart`, `Order`, `Payment Info`
+4. Connect all steps with arrows (transitions)
+
+---
+
+Would you like this in `.txt` format or as a **visual diagram** to help you build in StarUML?

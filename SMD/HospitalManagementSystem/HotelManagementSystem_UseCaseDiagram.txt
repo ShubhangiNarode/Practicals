@@ -1,0 +1,50 @@
+
+Use Case Diagram – Hotel Management System
+
+Actors:
+- Guest
+- Receptionist
+- Admin
+- Housekeeping Staff
+- Online Booking System (External System)
+
+Use Cases:
+1. Register/Login
+2. Book Room
+3. Cancel Booking
+4. Check-In
+5. Check-Out
+6. Manage Room Availability
+7. Assign Housekeeping
+8. Generate Invoice
+9. Provide Feedback
+
+System Boundary:
+- Hotel Management System
+
+Actor–Use Case Associations:
+- Guest → Register/Login, Book Room, Cancel Booking, Check-In, Check-Out, Provide Feedback
+- Receptionist → Check-In, Check-Out, Generate Invoice, Manage Room Availability
+- Admin → Manage Room Availability, Assign Housekeeping
+- Housekeeping Staff → Assign Housekeeping
+- Online Booking System → Book Room, Cancel Booking
+
+<<include>> Relationships:
+- Book Room <<include>> Register/Login
+- Cancel Booking <<include>> Register/Login
+- Check-Out <<include>> Generate Invoice
+
+<<extend>> Relationships:
+- Provide Feedback <<extend>> Check-Out
+- Assign Housekeeping <<extend>> Check-Out
+
+Generalization (Optional):
+- Receptionist and Admin can be generalized under "Employee"
+
+Visual Structure in StarUML:
+1. Create a new Use Case Diagram
+2. Drag a System box and label it “Hotel Management System”
+3. Add all actors outside the box
+4. Add all use cases inside the box
+5. Draw associations (lines) between actors and use cases
+6. Use <<include>>, <<extend>>, and generalization arrows as needed

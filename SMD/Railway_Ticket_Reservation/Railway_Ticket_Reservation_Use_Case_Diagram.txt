@@ -1,0 +1,56 @@
+
+Use Case Diagram for Railway Ticket Reservation System - StarUML Instructions (Extended)
+
+Step 1: Create New Project
+- Open StarUML.
+- Click on File > New > UML Model.
+
+Step 2: Add a Use Case Diagram
+- In the Model Explorer, right-click on 'Model' > Add Diagram > Use Case Diagram.
+- Rename the diagram to "Railway Ticket Reservation System".
+
+Step 3: Add System Boundary
+- From the toolbox, drag the "System" element.
+- Rename it to: Railway Ticket Reservation System.
+
+Step 4: Add Actors (Outside System Boundary)
+- User
+- Registered Passenger (inherits from User)
+- Admin
+- Payment Gateway (External System)
+
+Step 5: Add Use Cases (Inside System Boundary)
+- Search Train Availability
+- Register
+- Login
+- Book Ticket
+- Cancel Ticket
+- Print Ticket
+- Make Payment
+- Check Ticket Status
+- View Booking History
+- Manage User Accounts
+- Update Train Info
+- Generate Booking Reports
+- Apply Discount or Promo Code
+
+Step 6: Associate Actors with Use Cases
+- User --> Search Train Availability, Register
+- Registered Passenger --> Login, Book Ticket, Cancel Ticket, Print Ticket, Make Payment, Check Ticket Status, View Booking History, Apply Discount or Promo Code
+- Admin --> Login, Manage User Accounts, Update Train Info, Generate Booking Reports
+- Payment Gateway --> Make Payment
+
+Step 7: Add <<include>> Relationships
+- Book Ticket <<include>> Search Train Availability
+- Book Ticket <<include>> Make Payment
+- Print Ticket <<include>> Book Ticket
+
+Step 8: Add <<extend>> Relationships
+- Cancel Ticket <<extend>> Print Ticket
+- Apply Discount or Promo Code <<extend>> Make Payment
+- Check Ticket Status <<extend>> View Booking History
+
+Step 9: Add Generalization
+- Registered Passenger inherits from User (Generalization arrow from Registered Passenger to User)
+
+
