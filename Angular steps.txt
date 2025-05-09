@@ -1,0 +1,153 @@
+Install Node
+  node -v
+  npm -v 
+
+Install angular CLI
+  npm install -g @angular/cli
+  ng version
+
+create new app
+  ng new app_name --no-standalone
+  
+  cd app_name
+
+To run:
+  ng serve -o
+
+Generate Components:
+  ng g c register
+  same for login,showuser,navbar,home
+
+<all components created 4 files (html, ts, spec.ts, css)
+	in .html we are creating vocalizational contents
+	in .ts file we will write business logic
+	in .css is style sheet 
+	and .spec.ts is testing file //currently we does not req. it
+
+<STEPS:-
+
+1.remove every thing in "app.component.html"
+
+2.<h1>Hello Angular</h1>
+
+3.add <app-navbar> above the <h1>
+ 
+4.go to google search "angular material ui->components->toolbar->API" 
+
+5.Copy API and paste in app.module.ts and the 
+
+6. install: ng add @angular/material
+
+7.in import add api imported file 
+(step5,6,7 same for button, form, input, Matform module)
+
+8.add in navbar.html:
+	<div class="container">
+    <mat-toolbar color="primary">
+        <span>
+            Student Management System
+        </span>
+        <button mat-raised-button (click)="homeBTN()">Back</button>
+      </mat-toolbar>
+      
+</div>
+
+
+@NAVBAR
+9. navbar.css
+	.container{    width: 100%;}
+	.container button{margin-left: auto;}
+
+10. navbar.ts
+	import { Component } from '@angular/core';
+// import { Route } from '@angular/router';
+import { Router } from '@angular/router';
+@Component({
+  selector: 'app-navbar',
+  standalone: false,
+  templateUrl: './navbar.component.html',
+  styleUrl: './navbar.component.css'
+})
+
+export class NavbarComponent {
+constructor(private router:Router){
+
+}
+  homeBTN(){
+    this.router.navigate(['/'])
+  }
+}
+
+11.app-routing.model.ts (add)
+
+const routes: Routes = [
+  {
+    path:"register",
+    component:RegisterComponent
+  },
+  {
+    path:"login",
+    component:LoginComponent
+  },
+  {
+    path:"showuser",
+    component:ShowuserComponent
+  },
+  {
+    path:"",
+    component:HomeComponent
+  }
+];
+
+12. change in the app.component.html h1 tag to <router-outlet>"this will go to home page after click the back button"
+
+@HOME
+13. go to home.html: write
+
+<div class=""container>
+    <div class="oper">
+        <button mat-raised-button color="primary" (click)="regBTN()">Register</button>
+
+        <button mat-raised-button color="primary" (click)="logBTN()">Login</button>
+        
+        <button mat-raised-button color="primary" (click)="showBTN()">Show user</button>
+
+    </div>
+</div>
+
+14.home.ts:add 
+export class HomeComponent {
+  regBTN(){
+
+  }
+  logBTN(){
+
+  }
+  showBTN(){
+
+  }
+}
+
+15.in Css:
+	.container{
+    text-align: center;
+    margin-top: 20px;
+}
+.container .oper button{
+    margin: 10px;
+}
+
+16.@register
+.html
+.css
+.ts
+
+17.@Login
+.html
+.css
+.ts
+
+18.@Showdata
+.html
+.css
+.ts
