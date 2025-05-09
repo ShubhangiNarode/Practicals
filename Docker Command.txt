@@ -1,0 +1,34 @@
+docker -v     --to check version for docker
+
+docker images    -- to check available images
+
+docker ps      -- to check which container is available
+ 
+
+go to docker hub and serach OpenJDK copy link   docker pull OpenJDK and paste it in terminal
+
+
+docker pull OpenJDK
+
+docker images    -- to check this image is add 
+
+docker run --name JAVA -it -d OpenJDK   -- to run the container
+
+docker ps  -- to check this conetainer is running
+
+docker exec -it JAVA jshell
+
+jshell> System.out.println("Hello Word");
+
+jshell>int a=20
+
+jshell> int b=30
+
+jshell>System.out.println(a+b)
+
+jshell>exist
+
+
+
+
+
