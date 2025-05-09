@@ -1,0 +1,30 @@
+Install Node:
+  go to node.js website download and install
+  node -v
+  npm -v
+
+crete folder of project and ogo to cmd
+
+1.npm init -y					//for package .json
+2.create folder index.js in vs code
+
+3.npm install express --save   			//node module is created
+
+4.
+	const express=require('express')	//imporded express module
+	const app=express();   			//called express funtion
+
+5.create folder-public
+	create index.html inside the public folder
+
+6.write boiler-code for index.html
+
+7.index.js-> 					//providing port no. to static fun.:-
+	app.use(express.static('public))
+	ap.listen (4000,()=>{
+		console.log("server is started");
+	})
+
+8.copy contain of pract1 in public-folder and delete previous index.html
+
+  

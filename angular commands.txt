@@ -1,0 +1,3 @@
+ng new projectname --no-standalone
+ to run : ng serve -o
+to create new component : ng g c componentname
